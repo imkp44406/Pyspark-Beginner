@@ -13,7 +13,7 @@ if __name__ == "__main__":
     conf = SparkConf().setMaster("local[3]").setAppName("Avg-No-Of-Friends")
     sc = SparkContext(conf=conf)
 
-    fake_friends = sc.textFile("file///C:/Pycharm/Pyspark-Beginner/data/fakefriends.csv")
+    fake_friends = sc.textFile("file:///C:/Pycharm/Pyspark-Beginner/data/fakefriends.csv")
     lines = fake_friends.map(parseLine)
     # count_age = lines.map(lambda x:(x[0],(x[1],1))) // THIS WILL KATE BOTH KEY & VALUES
     count_age = lines.mapValues(lambda x: (x,1))

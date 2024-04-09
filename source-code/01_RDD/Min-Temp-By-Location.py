@@ -12,7 +12,7 @@ if __name__ == "__main__":
     conf = SparkConf().setMaster("local[3]").setAppName("Min-Temp-By-Location")
     sc=SparkContext(conf=conf)
 
-    input = sc.textFile("file///C:/Pycharm/Pyspark-Beginner/data/1800.csv")
+    input = sc.textFile("file:///C:/Pycharm/Pyspark-Beginner/data/1800.csv")
     rows = input.map(parseLine)
     filtered_data = rows.filter(lambda x: (x[1] == 1800 and x[2].upper() =='TMIN') )
     station_temps = filtered_data.map(lambda x: (x[0],x[3]))

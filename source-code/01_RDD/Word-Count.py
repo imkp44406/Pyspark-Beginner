@@ -5,7 +5,7 @@ if __name__ == "__main__":
     conf = SparkConf().setMaster("local[3]").setAppName("Word-Count")
     sc = SparkContext(conf=conf)
 
-    book = sc.textFile("file///C:/Pycharm/Pyspark-Beginner/data/Book.txt")
+    book = sc.textFile("file:///C:/Pycharm/Pyspark-Beginner/data/Book.txt")
     # words = book.flatMap(lambda x: x.split())
     words = book.flatMap(lambda x: re.compile(r'\W+', re.UNICODE).split(x.lower()))
     row = words.map(lambda x:(x,1))
